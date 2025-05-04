@@ -126,7 +126,7 @@ export default function PredictPage() {
                                                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
                                                                                 {item.text}
                                                                         </ReactMarkdown>
-                                                                        <div className='prose prose-neutral dark:prose-invert max-w-5xl'>
+                                                                        <div className='prose bg-neutral-800 dark:prose-neutral dark:prose-invert max-w-5xl'>
                                                                                 {item.code && (
                                                                                         <pre className=" p-4 rounded-md mt-2">
                                                                                                 <code className="text-sm">

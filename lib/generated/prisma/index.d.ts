@@ -875,22 +875,12 @@ export namespace Prisma {
 
   export type AggregateProblem = {
     _count: ProblemCountAggregateOutputType | null
-    _avg: ProblemAvgAggregateOutputType | null
-    _sum: ProblemSumAggregateOutputType | null
     _min: ProblemMinAggregateOutputType | null
     _max: ProblemMaxAggregateOutputType | null
   }
 
-  export type ProblemAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type ProblemSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type ProblemMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     title: string | null
     description: string | null
     category: string | null
@@ -899,7 +889,7 @@ export namespace Prisma {
   }
 
   export type ProblemMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     title: string | null
     description: string | null
     category: string | null
@@ -917,14 +907,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type ProblemAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type ProblemSumAggregateInputType = {
-    id?: true
-  }
 
   export type ProblemMinAggregateInputType = {
     id?: true
@@ -992,18 +974,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ProblemAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProblemSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProblemMinAggregateInputType
@@ -1034,22 +1004,18 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProblemCountAggregateInputType | true
-    _avg?: ProblemAvgAggregateInputType
-    _sum?: ProblemSumAggregateInputType
     _min?: ProblemMinAggregateInputType
     _max?: ProblemMaxAggregateInputType
   }
 
   export type ProblemGroupByOutputType = {
-    id: number
+    id: string
     title: string
     description: string
     category: string
     subcategory: string
     subsubcategory: string
     _count: ProblemCountAggregateOutputType | null
-    _avg: ProblemAvgAggregateOutputType | null
-    _sum: ProblemSumAggregateOutputType | null
     _min: ProblemMinAggregateOutputType | null
     _max: ProblemMaxAggregateOutputType | null
   }
@@ -1110,7 +1076,7 @@ export namespace Prisma {
     name: "Problem"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       title: string
       description: string
       category: string
@@ -1539,7 +1505,7 @@ export namespace Prisma {
    * Fields of the Problem model
    */
   interface ProblemFieldRefs {
-    readonly id: FieldRef<"Problem", 'Int'>
+    readonly id: FieldRef<"Problem", 'String'>
     readonly title: FieldRef<"Problem", 'String'>
     readonly description: FieldRef<"Problem", 'String'>
     readonly category: FieldRef<"Problem", 'String'>
@@ -1946,13 +1912,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -1960,9 +1919,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'Int'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
   /**
    * Deep Input Types
@@ -1973,7 +1932,7 @@ export namespace Prisma {
     AND?: ProblemWhereInput | ProblemWhereInput[]
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
-    id?: IntFilter<"Problem"> | number
+    id?: StringFilter<"Problem"> | string
     title?: StringFilter<"Problem"> | string
     description?: StringFilter<"Problem"> | string
     category?: StringFilter<"Problem"> | string
@@ -1991,7 +1950,7 @@ export namespace Prisma {
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: ProblemWhereInput | ProblemWhereInput[]
     OR?: ProblemWhereInput[]
     NOT?: ProblemWhereInput | ProblemWhereInput[]
@@ -2010,17 +1969,15 @@ export namespace Prisma {
     subcategory?: SortOrder
     subsubcategory?: SortOrder
     _count?: ProblemCountOrderByAggregateInput
-    _avg?: ProblemAvgOrderByAggregateInput
     _max?: ProblemMaxOrderByAggregateInput
     _min?: ProblemMinOrderByAggregateInput
-    _sum?: ProblemSumOrderByAggregateInput
   }
 
   export type ProblemScalarWhereWithAggregatesInput = {
     AND?: ProblemScalarWhereWithAggregatesInput | ProblemScalarWhereWithAggregatesInput[]
     OR?: ProblemScalarWhereWithAggregatesInput[]
     NOT?: ProblemScalarWhereWithAggregatesInput | ProblemScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Problem"> | number
+    id?: StringWithAggregatesFilter<"Problem"> | string
     title?: StringWithAggregatesFilter<"Problem"> | string
     description?: StringWithAggregatesFilter<"Problem"> | string
     category?: StringWithAggregatesFilter<"Problem"> | string
@@ -2029,7 +1986,7 @@ export namespace Prisma {
   }
 
   export type ProblemCreateInput = {
-    id: number
+    id?: string
     title: string
     description: string
     category: string
@@ -2038,7 +1995,7 @@ export namespace Prisma {
   }
 
   export type ProblemUncheckedCreateInput = {
-    id: number
+    id?: string
     title: string
     description: string
     category: string
@@ -2047,7 +2004,7 @@ export namespace Prisma {
   }
 
   export type ProblemUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -2056,7 +2013,7 @@ export namespace Prisma {
   }
 
   export type ProblemUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -2065,7 +2022,7 @@ export namespace Prisma {
   }
 
   export type ProblemCreateManyInput = {
-    id: number
+    id?: string
     title: string
     description: string
     category: string
@@ -2074,7 +2031,7 @@ export namespace Prisma {
   }
 
   export type ProblemUpdateManyMutationInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
@@ -2083,23 +2040,12 @@ export namespace Prisma {
   }
 
   export type ProblemUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     category?: StringFieldUpdateOperationsInput | string
     subcategory?: StringFieldUpdateOperationsInput | string
     subsubcategory?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2125,10 +2071,6 @@ export namespace Prisma {
     subsubcategory?: SortOrder
   }
 
-  export type ProblemAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type ProblemMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -2145,26 +2087,6 @@ export namespace Prisma {
     category?: SortOrder
     subcategory?: SortOrder
     subsubcategory?: SortOrder
-  }
-
-  export type ProblemSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2184,27 +2106,8 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2219,33 +2122,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2263,6 +2139,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
 
