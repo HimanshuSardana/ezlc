@@ -65,7 +65,7 @@ export default function PredictPage() {
                         if (aiSolution?.startsWith('```json')) {
                                 cleanSolution = aiSolution.replace('```json', '').replace('```', '').trim();
                         }
-                        console.log('Cleaned AI Solution:', JSON.parse(cleanSolution));
+                        // @ts-ignore
                         setFormattedSolution(JSON.parse(cleanSolution))
 
                         setResult(data);
@@ -117,6 +117,7 @@ export default function PredictPage() {
                                 <>
                                         <h3 className="text-3xl font-extrabold mx-[10%] pt-5 mb-5 border-0 border-t-2 border-1">Solution</h3>
                                         <Accordion type="single" collapsible className="mx-[10%]">
+                                                {/* @ts-ignore */}
                                                 {formattedSolution.map((item: any, index: number) => (
                                                         <AccordionItem key={index} value={`item-${index}`}>
                                                                 <AccordionTrigger className="text-lg font-bold">

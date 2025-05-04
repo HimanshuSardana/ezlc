@@ -6,10 +6,11 @@ import rehypeHighlight from "rehype-highlight";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { ChevronRight } from "lucide-react";
 
-export default async function ProblemPage({ params }) {
+export default async function ProblemPage({ params }: { params: any }) {
         const { id } = params;
 
         const problem = await getProblemById(id);
+        // @ts-ignore
         const solution = await getProblemSolution(problem.description);
 
         let cleanSolution = solution;
@@ -17,15 +18,15 @@ export default async function ProblemPage({ params }) {
                 cleanSolution = solution.replace('```json', '').replace('```', '').trim();
         }
 
+        // @ts-ignore
         cleanSolution = JSON.parse(cleanSolution);
-
 
         return (
                 <>
                         <Navbar />
                         <div className="mx-[10%] flex flex-col gap-6 py-6">
-                                <h3 className="text-3xl font-extrabold">{problem.title}</h3>
-                                <p className="text-lg text-muted-foreground">{problem.description}</p>
+                                <h3 className="text-3xl font-extrabold">{problem?.title}</h3>
+                                <p className="text-lg text-muted-foreground">{problem?.description}</p>
 
                                 <div className="flex items-center gap-3">
                                         <p>{problem?.category}</p>
@@ -39,6 +40,7 @@ export default async function ProblemPage({ params }) {
 
                                 {/* {JSON.stringify(cleanSolution)} */}
                                 <Accordion type="single" collapsible className="w-full">
+                                        {/* @ts-ignore */}
                                         {cleanSolution && cleanSolution.map((item: any, index: number) => (
                                                 <AccordionItem key={index} value={`item-${index}`}>
                                                         <AccordionTrigger className="text-lg font-bold">
